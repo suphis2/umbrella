@@ -26,28 +26,4 @@ cd ../
 helm install lamp ./lamp-umbrella
 
 
-lamp-umbrella/
-├── Chart.yaml
-├── values.yaml
-├── templates/
-│   └── ingress.yaml
-└── charts/
-    ├── apache/
-    │   ├── Chart.yaml
-    │   ├── values.yaml
-    │   └── templates/
-    │       ├── deployment.yaml
-    │       └── service.yaml
-    ├── php/
-    │   ├── Chart.yaml
-    │   ├── values.yaml
-    │   └── templates/
-    │       ├── deployment.yaml
-    │       └── service.yaml
-    └── mysql/
-        ├── Chart.yaml
-        ├── values.yaml
-        └── templates/
-            ├── deployment.yaml
-            ├── service.yaml
-            └── pvc.yaml
+
