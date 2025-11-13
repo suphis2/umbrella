@@ -1,0 +1,14 @@
+apiVersion: v2
+name: lamp-umbrella
+description: Umbrella chart voor LAMP-stack
+version: 0.1.0
+dependencies:
+  - name: apache
+    version: 1.0.0
+    repository: "file://charts/apache"
+  - name: mysql
+    version: 1.0.0
+    repository: "file://charts/mysql"
+  - name: php
+    version: 1.0.0
+    repository: "file://charts/php"

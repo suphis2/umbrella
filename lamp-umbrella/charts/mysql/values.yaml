@@ -1,0 +1,19 @@
+image:
+  repository: mysql
+  tag: 8.0
+  pullPolicy: IfNotPresent
+
+mysqlRootPassword: my-secret-pw
+mysqlDatabase: lampdb
+mysqlUser: lampuser
+mysqlPassword: lamp123
+
+service:
+  type: ClusterIP
+  port: 3306
+
+persistence:
+  enabled: true
+  storageClass: local-path
+  accessMode: ReadWriteOnce
+  size: 1Gi

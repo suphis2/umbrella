@@ -1,0 +1,4 @@
+apiVersion: v2
+name: php
+description: PHP via Apache chart
+version: 1.0.0

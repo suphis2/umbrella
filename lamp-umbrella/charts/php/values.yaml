@@ -1,0 +1,14 @@
+image:
+  repository: php
+  tag: 8.2-apache
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 8080
+
+resources: {}
+
+persistence:
+  enabled: false
+  mountPath: /var/www/html

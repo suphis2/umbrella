@@ -1,0 +1,20 @@
+apache:
+  service:
+    type: ClusterIP
+    port: 80
+  image:
+    repository: httpd
+    tag: latest
+
+mysql:
+  rootPassword: my-secret-pw
+  image:
+    repository: mysql
+    tag: 8.0
+
+php:
+  image:
+    repository: php
+    tag: 8.2-apache
+  service:
+    port: 8080

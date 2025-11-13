@@ -1,0 +1,43 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: lamp-ingress
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - apache.chefdev.nl
+        - php.chefdev.nl
+        - mysql.chefdev.nl
+      secretName: kc-chefdev-tls
+  rules:
+    - host: apache.chefdev.nl
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ include "apache.fullname" . }}
+                port:
+                  number: 80
+    - host: php.chefdev.nl
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ include "php.fullname" . }}
+                port:
+                  number: 8080
+    - host: mysql.chefdev.nl
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ include "mysql.fullname" . }}
+                port:
+                  number: 3306
