@@ -4,13 +4,13 @@ kubectl create secret tls kc-chefdev-tls \
   --key=private.key
 
 
-cd /umbrella/lamp-umbrella
+cd lamp-umbrella
 
 kubectl apply -f ingress.yaml
 
 
 
-cd /umbrella/
+cd ../
 
 kubectl apply -f apache-testpage-configmap.yaml
 
@@ -21,7 +21,7 @@ cd lamp-umbrella
 helm dependency update
 
 
-cd /umbrella/
+cd ../
 
 helm install lamp ./lamp-umbrella
 
