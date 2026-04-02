@@ -1,43 +1,33 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: lamp-ingress
+  name: lamp-ingress-traefik
+  namespace: default
+  annotations:
+    # expliciet HTTP
+    traefik.ingress.kubernetes.io/router.entrypoints: web
 spec:
-  ingressClassName: nginx
-  tls:
-    - hosts:
-        - apache.chefdev.nl
-        - php.chefdev.nl
-        - mysql.chefdev.nl
-      secretName: kc-chefdev-tls
+  ingressClassName: traefik
+
   rules:
-    - host: apache.chefdev.nl
+    - host: apache.local
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: {{ include "apache.fullname" . }}
+                name: apache-lamp
                 port:
                   number: 80
-    - host: php.chefdev.nl
+
+    - host: php.local
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: {{ include "php.fullname" . }}
+                name: php-lamp
                 port:
                   number: 8080
-    - host: mysql.chefdev.nl
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: {{ include "mysql.fullname" . }}
-                port:
-                  number: 3306
